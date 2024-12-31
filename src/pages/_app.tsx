@@ -69,24 +69,24 @@ function makeNetworkRequest<T>(
   return promise;
 }
 
-// export default function App({ Component, pageProps }: AppProps) {
-//   const environment = useMemo(
-//     () =>
-//       createIsographEnvironment(
-//         createIsographStore(),
-//         makeNetworkRequest,
-//         // Optional missing field handler
-//         null,
-//         // Optional logger
-//         console.log(),
-//       ),
-//     [],
-//   );
-//   return (
-//     <IsographEnvironmentProvider environment={environment}>
-//       <Suspense fallback="loading">
-//         <Component {...pageProps} />
-//       </Suspense>
-//     </IsographEnvironmentProvider>
-//   );
-// }
+export default function App({ Component, pageProps }: AppProps) {
+  const environment = useMemo(
+    () =>
+      createIsographEnvironment(
+        createIsographStore(),
+        makeNetworkRequest,
+        // Optional missing field handler
+        null,
+        // Optional logger
+        console.log(),
+      ),
+    [],
+  );
+  return (
+    <IsographEnvironmentProvider environment={environment}>
+      <Suspense fallback="loading">
+        <Component {...pageProps} />
+      </Suspense>
+    </IsographEnvironmentProvider>
+  );
+}
