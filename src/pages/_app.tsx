@@ -7,16 +7,13 @@ import {
 } from "@isograph/react";
 
 function makeNetworkRequest<T>(queryText: string, variables: any): Promise<T> {
-  let promise = fetch(
-    "https://swapi-graphql.netlify.app/.netlify/functions/index",
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ query: queryText, variables }),
-    }
-  ).then(async (response) => {
+  let promise = fetch("https://swapi-graphql.netlify.app/graphql", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ query: queryText, variables }),
+  }).then(async (response) => {
     const json = await response.json();
 
     if (response.ok) {
