@@ -1,10 +1,11 @@
-import { useMemo } from "react";
+import { Suspense, useMemo } from "react";
 import type { AppProps } from "next/app";
 import {
   createIsographEnvironment,
   createIsographStore,
   IsographEnvironmentProvider,
 } from "@isograph/react";
+import React from "react";
 
 function makeNetworkRequest<T>(queryText: string, variables: any): Promise<T> {
   let promise = fetch("https://swapi-graphql.netlify.app/graphql", {
@@ -34,12 +35,20 @@ function makeNetworkRequest<T>(queryText: string, variables: any): Promise<T> {
 
 export default function App({ Component, pageProps }: AppProps) {
   const environment = useMemo(
-    () => createIsographEnvironment(createIsographStore(), makeNetworkRequest),
+    () =>
+      createIsographEnvironment(
+        createIsographStore(),
+        makeNetworkRequest,
+        null,
+        typeof window != "undefined" ? console.log : null
+      ),
     []
   );
   return (
     <IsographEnvironmentProvider environment={environment}>
-      <Component {...pageProps} />
+      <Suspense fallback="Loading...">
+        <Component {...pageProps} />
+      </Suspense>
     </IsographEnvironmentProvider>
   );
 }
