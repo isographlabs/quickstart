@@ -1,16 +1,19 @@
 import {
-  IsographEnvironmentProvider,
   createIsographEnvironment,
   createIsographStore,
-} from "@isograph/react";
-import type { AppProps } from "next/app";
-import { useMemo } from "react";
+  IsographEnvironmentProvider,
+} from '@isograph/react';
+import type { AppProps } from 'next/app';
+import { Suspense, useMemo } from 'react';
 
-function makeNetworkRequest<T>(queryText: string, variables: any): Promise<T> {
-  const promise = fetch("https://graphql.org/graphql/", {
-    method: "POST",
+function makeNetworkRequest<T>(
+  queryText: string,
+  variables: unknown,
+): Promise<T> {
+  const promise = fetch('https://graphql.org/graphql/', {
+    method: 'POST',
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
     },
     body: JSON.stringify({ query: queryText, variables }),
   }).then(async (response) => {
@@ -20,19 +23,19 @@ function makeNetworkRequest<T>(queryText: string, variables: any): Promise<T> {
       /**
        * Enforce that the network response follows the specification:: {@link https://spec.graphql.org/draft/#sec-Errors}.
        */
-      if (Object.hasOwn(json, "errors")) {
+      if (Object.hasOwn(json, 'errors')) {
         if (!Array.isArray(json.errors) || json.errors.length === 0) {
-          throw new Error("GraphQLSpecificationViolationError", {
+          throw new Error('GraphQLSpecificationViolationError', {
             cause: json,
           });
         }
-        throw new Error("GraphQLError", {
+        throw new Error('GraphQLError', {
           cause: json.errors,
         });
       }
       return json;
     }
-    throw new Error("NetworkError", {
+    throw new Error('NetworkError', {
       cause: json,
     });
   });
@@ -41,12 +44,22 @@ function makeNetworkRequest<T>(queryText: string, variables: any): Promise<T> {
 
 export default function App({ Component, pageProps }: AppProps) {
   const environment = useMemo(
-    () => createIsographEnvironment(createIsographStore(), makeNetworkRequest),
-    []
+    () =>
+      createIsographEnvironment(
+        createIsographStore(),
+        makeNetworkRequest,
+        // Optional missing field handler
+        null,
+        // Optional logger
+        console.log,
+      ),
+    [],
   );
   return (
     <IsographEnvironmentProvider environment={environment}>
-      <Component {...pageProps} />
+      <Suspense fallback="loading">
+        <Component {...pageProps} />
+      </Suspense>
     </IsographEnvironmentProvider>
   );
 }

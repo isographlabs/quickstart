@@ -1,30 +1,31 @@
 {
-  "name": "quickstart-isograph",
+  "name": "isograph-quickstart",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "eslint"
   },
   "dependencies": {
-    "@isograph/react": "0.0.0-main-caf6212b",
-    "next": "14.1.0",
-    "react": "^18",
-    "react-dom": "^18"
+    "next": "15.5.0",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
+    "@isograph/react": "0.0.0-main-caf6212b"
   },
   "devDependencies": {
+    "@eslint/eslintrc": "^3",
+    "@ianvs/prettier-plugin-sort-imports": "^4.4.1",
     "@isograph/babel-plugin": "0.0.0-main-caf6212b",
     "@isograph/compiler": "0.0.0-main-caf6212b",
     "@types/node": "^20",
-    "@types/react": "^18",
-    "@types/react-dom": "^18",
-    "eslint": "^8",
-    "eslint-config-next": "14.1.0",
-    "typescript": "^5",
-    "@ianvs/prettier-plugin-sort-imports": "^4.4.1",
-    "prettier": "^3.2.4"
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "15.5.0",
+    "prettier": "^3.6.2",
+    "typescript": "^5"
   },
   "packageManager": "pnpm@10.15.0"
 }
