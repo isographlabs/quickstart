@@ -1,4 +1,11 @@
 {
   "project_root": "./src/components",
-  "schema": "./schema.graphql"
+  "schema": "./schema.graphql",
+  "options": {
+    "open_telemetry": {
+      "service_name": "quickstart",
+      "collector_endpoint": "http://localhost:4317",
+      "enable_tracing": true
+    }
+  }
 }

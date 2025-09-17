@@ -33,6 +33,7 @@ export const HomePage = iso(`
             'This API should not return null films or null episode IDs.',
           );
         }
+
         return film1.episodeID > film2.episodeID ? 1 : -1;
       }).filter(nonNullable),
     [props.data.allFilms?.films],
