@@ -9,22 +9,22 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@isograph/react": "0.0.0-main-620f4c6f",
-    "next": "14.1.0",
-    "react": "18.3.1",
-    "react-dom": "18.3.1"
+    "@isograph/react": "0.0.0-main-0eb53a17",
+    "next": "=15.0.0",
+    "react": "^19",
+    "react-dom": "^19"
   },
   "devDependencies": {
-    "@isograph/babel-plugin": "0.0.0-main-620f4c6f",
-    "@isograph/compiler": "0.0.0-main-620f4c6f",
+    "@ianvs/prettier-plugin-sort-imports": "^4.4.1",
+    "@isograph/plugin-swc": "0.0.0-main-0eb53a17",
+    "@isograph/compiler": "0.0.0-main-0eb53a17",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "eslint": "^8",
-    "eslint-config-next": "14.1.0",
-    "typescript": "^5",
-    "@ianvs/prettier-plugin-sort-imports": "^4.4.1",
-    "prettier": "^3.2.4"
+    "eslint-config-next": "15",
+    "prettier": "^3.2.4",
+    "typescript": "^5"
   },
   "packageManager": "pnpm@10.15.0"
 }

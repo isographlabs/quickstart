@@ -13,16 +13,15 @@ function makeNetworkRequest<T>(
   variables: any,
 ): Promise<T> {
   if (operation.kind !== 'Operation') {
-    throw new Error('This project does not support persisted operations');
+    throw new Error('Persisted operations not supported');
   }
-  const queryText = operation.text;
 
   const promise = fetch('https://graphql.org/graphql/', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({ query: queryText, variables }),
+    body: JSON.stringify({ query: operation.text, variables }),
   }).then(async (response) => {
     const json = await response.json();
 

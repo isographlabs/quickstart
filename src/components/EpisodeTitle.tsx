@@ -1,5 +1,5 @@
-import React from "react";
-import { iso } from "@iso";
+import { iso } from '@iso';
+import React from 'react';
 
 export const EpisodeTitle = iso(`
   field Film.EpisodeTitle @component {
