@@ -7,7 +7,7 @@ import entrypoint_Root__HomePage from '../__isograph/Root/HomePage/entrypoint';
 // This means that the type of the exported iso literal is exactly
 // the type of the passed-in function, which takes one parameter
 // of type TParam.
-type IdentityWithParam<TParam extends object> = <TClientFieldReturn>(
+type IdentityWithParam<TParam extends object, TReturnConstraint = unknown> = <TClientFieldReturn extends TReturnConstraint>(
   clientField: (param: TParam) => TClientFieldReturn
 ) => (param: TParam) => TClientFieldReturn;
 
@@ -53,7 +53,7 @@ type MatchesWhitespaceAndString<
 
 export function iso<T>(
   param: T & MatchesWhitespaceAndString<'field Film.EpisodeTitle', T>
-): IdentityWithParamComponent<Film__EpisodeTitle__param>;
+): IdentityWithParam<Film__EpisodeTitle__param>;
 
 export function iso<T>(
   param: T & MatchesWhitespaceAndString<'field Root.HomePage', T>

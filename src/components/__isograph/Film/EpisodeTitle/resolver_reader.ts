@@ -1,5 +1,6 @@
-import type {ComponentReaderArtifact, ExtractSecondParam, ReaderAst } from '@isograph/react';
+import type { EagerReaderArtifact, ReaderAst } from '@isograph/react';
 import { Film__EpisodeTitle__param } from './param_type';
+import { Film__EpisodeTitle__output_type } from './output_type';
 import { EpisodeTitle as resolver } from '../../../EpisodeTitle';
 
 const readerAst: ReaderAst<Film__EpisodeTitle__param> = [
@@ -19,11 +20,11 @@ const readerAst: ReaderAst<Film__EpisodeTitle__param> = [
   },
 ];
 
-const artifact: ComponentReaderArtifact<
+const artifact: EagerReaderArtifact<
   Film__EpisodeTitle__param,
-  ExtractSecondParam<typeof resolver>
+  Film__EpisodeTitle__output_type
 > = {
-  kind: "ComponentReaderArtifact",
+  kind: "EagerReaderArtifact",
   fieldName: "Film.EpisodeTitle",
   resolver,
   readerAst,
