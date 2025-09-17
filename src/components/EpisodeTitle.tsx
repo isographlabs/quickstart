@@ -2,7 +2,7 @@ import { iso } from '@iso';
 import React from 'react';
 
 export const EpisodeTitle = iso(`
-  field Film.EpisodeTitle {
+  field Film.EpisodeTitle @component {
     title
     episodeID
   }

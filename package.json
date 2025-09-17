@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@isograph/react": "0.0.0-main-0eb53a17",
-    "next": "15",
+    "next": "=15.0.0",
     "react": "^19",
     "react-dom": "^19"
   },
